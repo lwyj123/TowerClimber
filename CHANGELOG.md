@@ -1,12 +1,8 @@
 # Changelog
 **Changes in  v0.0.1:**
 
-*Spell Changes!*
-- ???
+*Initial*
+- 基本战斗系统
+- 基本探索系统
 
-*Inventory Changes!*
-- ???
-
-*Bug fixes!*
-- ???
 
