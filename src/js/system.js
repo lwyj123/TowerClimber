@@ -23,8 +23,7 @@ var System = function() {
     var saveAll = function() {
         save();
         player.save();
-        spells.save();
-        upgrades.save();
+        //upgrades.save();
         buffs.save();
         monsters.save();
         tower.save();
@@ -36,12 +35,6 @@ var System = function() {
         saveAll();
         location.reload();
     }
-
-    var trackEvent = function(eventCategory, eventAction, eventLabel, eventValue) {
-        if (true !== trackOptOut) {
-            return ga('send', 'event', eventCategory, eventAction, eventLabel || null, eventValue || null);
-        }
-    };
 
     //Load Method
     var load = function() {
@@ -59,44 +52,15 @@ var System = function() {
     var loadAll = function() {
         load();
         player.load();
-        spells.load();
-        upgrades.load();
+        //upgrades.load();
         buffs.load();
         monsters.load();
         tower.load();
         inventory.load();
-
-        trackEvent('system', 'load', 'speed', player.getSpeedLevel());
-        trackEvent('system', 'load', 'magic', player.getMagicLevel());
-        trackEvent('system', 'load', 'strength', player.getStrengthLevel());
-        trackEvent('system', 'load', 'dexterity', player.getDexterityLevel());
-        trackEvent('system', 'load', 'constitution', player.getConstitutionLevel());
-        trackEvent('system', 'load', 'tower_level', tower.getMaxFloor());
     };
 
-    //Getters
-    self.getIdleMode = function() {
-        return idleMode;
-    };
 
     //Setters
-
-    //Other Methods
-    var loadIdleHealthSlider = function() {
-        idleHealthSlider = new Slider("#idleRest", {
-            ticks: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-            ticks_snap_bounds: 10,
-            value: 100
-        });
-    };
-
-    var loadIdleManaSlider = function() {
-        idleManaSlider = new Slider("#idleMpRest", {
-            ticks: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-            ticks_snap_bounds: 10,
-            value: 100
-        });
-    };
 
     self.runGame = function() {
         theGame = window.setInterval(main, refreshSpeed);
@@ -118,7 +82,6 @@ var System = function() {
         var exportedData = {
             systemSave: localStorage.getItem('systemSave'),
             playerSave: localStorage.getItem('playerSave'),
-            spellsSave: localStorage.getItem('spellsSave'),
             upgradesSave: localStorage.getItem('upgradesSave'),
             buffsSave: localStorage.getItem('buffsSave'),
             monstersSave: localStorage.getItem('monstersSave'),
@@ -141,7 +104,6 @@ var System = function() {
 
                 localStorage.setItem('systemSave', importedData.systemSave);
                 localStorage.setItem('playerSave', importedData.playerSave);
-                localStorage.setItem('spellsSave', importedData.spellsSave);
                 localStorage.setItem('upgradesSave', importedData.upgradesSave);
                 localStorage.setItem('buffsSave', importedData.buffsSave);
                 localStorage.setItem('monstersSave', importedData.monstersSave);
@@ -164,7 +126,6 @@ var System = function() {
             // localStorage.clear();
                 localStorage.removeItem('systemSave');
                 localStorage.removeItem('playerSave');
-                localStorage.removeItem('spellsSave');
                 localStorage.removeItem('upgradesSave');
                 localStorage.removeItem('buffsSave');
                 localStorage.removeItem('monstersSave');
@@ -179,6 +140,7 @@ var System = function() {
     };
 
     var updateTime = function(number) {
+        /*
         document.getElementById("seconds").innerHTML = number % 60;
         number = Math.floor(number / 60);
         document.getElementById("minutes").innerHTML = number % 60;
@@ -186,6 +148,7 @@ var System = function() {
         document.getElementById("hours").innerHTML = number % 24;
         number = Math.floor(number / 24);
         document.getElementById("days").innerHTML = number;
+        */
     };
 
     var main = function() {
@@ -196,78 +159,44 @@ var System = function() {
         if (player.getResting()) {
             player.rest();
         }
-        if (idleMode) {
-            if (!player.getInBattle()) {
-                if (buffs.getBarrierLeft() === 0 && buffs.getAutoBarrierCast()) {
-                    spells.castSpell("barrier");
-                }
-                if ((100*(player.getHealthCurrentValue()/player.getHealthMaximumValue()) >= idleHealthSlider.getValue()) && (100*(player.getManaCurrentValue()/player.getManaMaximumValue())) >= idleManaSlider.getValue() && !player.getResting()) {
-                    tower.exploreFloor();
-                }
-                else if (!player.getResting() || player.isFullyRested()) {
-                    player.toggleRest();
-                }
-            }
-            else {
-                monsters.attackMelee();
-            }
-        }
+
+
         updateTime(ticks);
         saveAll();
     };
 
-    self.toggleIdle = function() {
-        if (player.getCurrentFloor() === 0) {
-            return false;
-        }
-        if (idleMode) {
-            self.gameSpeed(1000);
-            idleMode = false;
-            loadIdleButton();
-        }
-        else {
-            idleMode = true;
-            loadIdleButton();
-        }
-    };
 
     var startTheEngine = function() {
         loadAll();
-        loadIdleHealthSlider();
-        loadIdleManaSlider();
-        loadIdleButton();
+        //loadIdleHealthSlider();
+        //loadIdleManaSlider();
+        //loadIdleButton();
         player.loadPlayerScreen();
         player.loadExploreButton();
         player.loadRestButton();
-        spells.updateSpellbook();
-        upgrades.loadExcelia();
-        upgrades.updateUpgrades();
-        upgrades.loadTimeUpgrades();
         buffs.updateTemporaryBuffs(false);
-        buffs.updateToggleableBuffs();
+        //buffs.updateToggleableBuffs();
         buffs.updatePermanentBuffs();
         if (player.getInBattle()) {
             monsters.loadMonsterInfo(monsters.getInstancedMonster());
         }
         tower.loadTowerScreen();
-        inventory.updateInventoryHTML();
-        inventory.updateInventory();
-        inventory.updateEquipment();
-        self.gameSpeed(1000);
+        self.gameSpeed(200);
         init = true;
     };
-
+    /*
     var loadIdleButton = function() {
         if (idleMode) {
-            document.getElementById("idleSwitch").innerHTML = '<button class="btn btn-success" onClick="system.toggleIdle()">Idle ON</button>';
+            document.getElementById("idleSwitch").innerHTML = '<button class="btn btn-success" onClick="system.toggleIdle()">放置开始</button>';
         }
         else {
-            document.getElementById("idleSwitch").innerHTML = '<button class="btn btn-danger" onClick="system.toggleIdle()">Idle OFF</button>';
+            document.getElementById("idleSwitch").innerHTML = '<button class="btn btn-danger" onClick="system.toggleIdle()">放置关闭</button>';
         }
     };
+    */
 };
 
-$.get( "https://raw.githubusercontent.com/iCrawlerRPG/iCrawlerRPG.github.io/master/CHANGELOG.md", function( data ) {
+$.get( "https://raw.githubusercontent.com/lwyj123/TowerClimber/master/CHANGELOG.md", function( data ) {
 
     var converter       = new showdown.Converter(),
         md_content        = data,

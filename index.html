@@ -3,64 +3,49 @@
 	<head>
 		<meta charset="UTF-8">
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.0/css/bootstrap-slider.min.css">
-		<link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
-		<link rel="stylesheet" href="assets/css/main.css">
-		<link rel="shortcut icon" type="image/png" href="http://icrawlerrpg.github.io/assets/white-tower.png"/>
-		<title>ICrawler · v0.9.1</title>
+		<link rel="stylesheet" href="src/css/main.css">
+		<title>TowerClimber · v0.1</title>
 	</head>
 	<body>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.3.0/showdown.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<script type="text/javascript" src="assets/js/system.js"></script>
-		<script type="text/javascript" src="assets/js/player.js"></script>
-		<script type="text/javascript" src="assets/js/spells.js"></script>
-		<script type="text/javascript" src="assets/js/upgrades.js"></script>
-		<script type="text/javascript" src="assets/js/buffs.js"></script>
-		<script type="text/javascript" src="assets/js/monsters.js"></script>
-		<script type="text/javascript" src="assets/js/tower.js"></script>
-		<script type="text/javascript" src="assets/js/inventory.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcss.com/showdown/1.6.4/showdown.min.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+		<script type="text/javascript" src="src/js/system.js"></script>
+		<script type="text/javascript" src="src/js/player.js"></script>
+		<script type="text/javascript" src="src/js/upgrades.js"></script>
+		<script type="text/javascript" src="src/js/buffs.js"></script>
+		<script type="text/javascript" src="src/js/monsters.js"></script>
+		<script type="text/javascript" src="src/js/tower.js"></script>
+		<script type="text/javascript" src="src/js/inventory.js"></script>
+ 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.0/bootstrap-slider.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('[data-toggle="tooltip"]').tooltip();
 			});
 		</script>
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-			ga('create', 'UA-76169051-1', 'auto');
-			ga('send', 'pageview');
-		</script>
 		<div class="container-fluid">
 			<div class="row" style="height: 10px;"></div>
 			<div class="row">
 				<div class="col-xs-12">
-					<p class="text-center" style="font-family: 'Germania One', cursive;"><span class="h1">ICrawler</span> <span class="h4 text-muted">alpha ver0.9.1</span></p>
+					<p class="text-center" style="font-family: 'Germania One', cursive;"><span class="h1">TowerClimber</span> <span class="h4 text-muted">ver0.1</span></p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" role="tablist">
 						<li role="presentation" class="active">
-							<a href="#towerTab" role="tab" data-toggle="tab">Tower</a>
+							<a href="#towerTab" role="tab" data-toggle="tab">塔</a>
 						</li>
 						<li role="presentation">
-							<a href="#inventoryTab" role="tab" data-toggle="tab">Inventory</a>
-						</li>
-						<li role="presentation">
-							<a href="#upgradesTab" role="tab" data-toggle="tab">Upgrades</a>
+							<a href="#upgradesTab" role="tab" data-toggle="tab">升级</a>
 						</li>
                         <li role="presentation">
-                            <a href="#changelogTab" role="tab" data-toggle="tab">Changelog</a>
+                            <a href="#changelogTab" role="tab" data-toggle="tab">升级日志</a>
                         </li>
                         <li role="presentation">
-                            <a href="#dataTab" role="tab" data-toggle="tab">Game Data</a>
+                            <a href="#dataTab" role="tab" data-toggle="tab">游戏数据</a>
                         </li>
 					</ul>
 				</div>
@@ -69,7 +54,7 @@
 				<div role="tabpanel" class="tab-pane active" id="towerTab">
 					<div class="row" style="height: 10px;"></div>
 					<div class="row">
-						<div class="col-xs-6">
+						<div class="col-xs-12">
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="panel panel-default">
@@ -79,7 +64,7 @@
 													<div class="row">
 														<div class="col-xs-12">
 															<h3 class="panel-title" style="font-family: 'Germania One', cursive;">
-																<img src="assets/histogram.png" style="height: 25px;"></img> Status Screen
+																<img src="src/histogram.png" style="height: 25px;"></img> 状态栏
 															</h3>
 														</div>
 													</div>
@@ -93,7 +78,7 @@
 													<div class="row">
 														<div class="col-xs-1">HP: </div>
 														<div class="col-xs-11">
-															<div class="progress" data-toggle="tooltip" data-placement="top" title="Your health. You die if this gets to 0." style="margin-bottom: 5px;">
+															<div class="progress" data-toggle="tooltip" data-placement="top" title="到0你就挂了" style="margin-bottom: 5px;">
 																<div id="hpbar" class="progress-bar progress-bar-danger" role="progressbar" style="width: 100%;">
 																	<span id="hp">0</span>/<span id="hpmax">0</span>
 																</div>
@@ -103,7 +88,7 @@
 													<div class="row">
 														<div class="col-xs-1">MP: </div>
 														<div class="col-xs-11">
-															<div class="progress" data-toggle="tooltip" data-placement="top" title="Your mana. You cannot cast spells without this." style="margin-bottom: 0px;">
+															<div class="progress" data-toggle="tooltip" data-placement="top" title="到0你也不会挂" style="margin-bottom: 0px;">
 																<div id="mpbar" class="progress-bar progress-bar-info" role="progressbar" style="width: 100%;">
 																	<span id="mp">0</span>/<span id="mpmax">0</span>
 																</div>
@@ -122,7 +107,7 @@
 																STR: <span id="str">0</span>
 															</div>
 															<div class="col-xs-8">
-																<div class="progress" data-toggle="tooltip" data-placement="top" title="Strength. Allows you to hit harder." style="margin-bottom: 5px;">
+																<div class="progress" data-toggle="tooltip" data-placement="top" title="力量，更高的攻击" style="margin-bottom: 5px;">
 																	<div id="strprog" class="progress-bar" role="progressbar" style="width: 100%;">
 																		<span id="strper">0%</span>
 																	</div>
@@ -134,7 +119,7 @@
 																CON: <span id="con">0</span>
 															</div>
 															<div class="col-xs-8">
-																<div class="progress" data-toggle="tooltip" data-placement="top" title="Constitution. Increase your health and decrease damage taken." style="margin-bottom: 5px;">
+																<div class="progress" data-toggle="tooltip" data-placement="top" title="体格，提升你血量上限以及防御" style="margin-bottom: 5px;">
 																	<div id="conprog" class="progress-bar" role="progressbar" style="width: 100%;">
 																		<span id="conper">0%</span>
 																	</div>
@@ -146,7 +131,7 @@
 																MGC: <span id="mgc">0</span>
 															</div>
 															<div class="col-xs-8">
-																<div class="progress" data-toggle="tooltip" data-placement="top" title="Magic. Increase your mana and slightly boost your spell efficiency. Also unlocks new spells." style="margin-bottom: 0px;">
+																<div class="progress" data-toggle="tooltip" data-placement="top" title="魔力，能让你更加高效的释放魔法，提高法力上限，解锁新魔法" style="margin-bottom: 0px;">
 																	<div id="mgcprog" class="progress-bar" role="progressbar" style="width: 100%;">
 																		<span id="mgcper">0%</span>
 																	</div>
@@ -160,7 +145,7 @@
 																DEX: <span id="dex">0</span>
 															</div>
 															<div class="col-xs-8">
-																<div class="progress" data-toggle="tooltip" data-placement="top" title="Dexterity. Slight damage increase." style="margin-bottom: 5px;">
+																<div class="progress" data-toggle="tooltip" data-placement="top" title="灵巧，使得普通攻击更加稳定，最小伤害值提升。" style="margin-bottom: 5px;">
 																	<div id="dexprog" class="progress-bar" role="progressbar" style="width: 100%;">
 																		<span id="dexper">0%</span>
 																	</div>
@@ -172,7 +157,7 @@
 																SPD: <span id="spd">0</span>
 															</div>
 															<div class="col-xs-8">
-																<div class="progress" data-toggle="tooltip" data-placement="top" title="Speed. Allows you to explore the floor faster, and also increases the chance of running away." style="margin-bottom: 5px;">
+																<div class="progress" data-toggle="tooltip" data-placement="top" title="速度，提高你探索的速度" style="margin-bottom: 5px;">
 																	<div id="spdprog" class="progress-bar" role="progressbar" style="width: 100%;">
 																		<span id="spdper">0%</span>
 																	</div>
@@ -195,7 +180,7 @@
 													<h3 class="panel-title" style="font-family: 'Germania One', cursive;"><img src="assets/white-tower.png" style="height: 25px;"></img> The Tower</h3>
 												</div>
 												<div class="col-xs-9 text-right">
-													You are currently at Floor <span id="floor">0</span>.
+													当前楼层 <span id="floor">0</span>.
 												</div>
 											</div>
 										</div>
@@ -203,7 +188,7 @@
 											<div class="panel-body">
 												<div class="row">
 													<div class="col-xs-12">
-														Floor explored:
+														已探索楼层:
 													</div>
 												</div>
 												<div class="row">
@@ -234,12 +219,12 @@
 										<div class="panel-footer">
 											<div class="row">
 												<div class="col-xs-12">
-													Floor Log:
+													探索日志:
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-xs-12">
-													<span id="floorlog">Nothing happened here yet.</span>
+													<span id="floorlog">什么事都没有发生</span>
 												</div>
 											</div>
 										</div>
@@ -250,7 +235,7 @@
 								<div class="col-xs-12">
 									<div class="panel panel-default">
 										<div class="panel-heading" data-toggle="collapse" data-target="#collapseBattle">
-											<h3 class="panel-title" style="font-family: 'Germania One', cursive;"><img src="assets/crossed-swords.png" style="height: 25px;"></img> Battle Screen</h3>
+											<h3 class="panel-title" style="font-family: 'Germania One', cursive;"><img src="src/crossed-swords.png" style="height: 25px;"></img> 战斗</h3>
 										</div>
 										<div id="collapseBattle" class="panel-collapse collapse in">
 											<div class="panel-body">
@@ -283,10 +268,10 @@
 														</div>
 														<div class="row">
 															<div class="col-xs-6">
-																<button class="btn btn-block btn-danger" onClick="monsters.attackMelee()">Fight</button>
+																<button class="btn btn-block btn-danger" onClick="monsters.attackMelee()">攻击</button>
 															</div>
 															<div class="col-xs-6">
-																<button class="btn btn-block btn-warning" onClick="monsters.runAway()">Run</button>
+																<button class="btn btn-block btn-warning" onClick="monsters.runAway()">逃跑</button>
 															</div>
 														</div>
 													</div>
@@ -296,298 +281,12 @@
 										<div class="panel-footer">
 											<div class="row">
 												<div class="col-xs-12">
-													Combat Log:
+													战斗日志:
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-xs-12">
 													<span id="combatlog"></span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-6">
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="panel panel-default">
-										<div class="panel-heading" data-toggle="collapse" data-target="#collapseTimeControls">
-											<div class="row">
-												<div class="col-xs-3">
-													<h3 class="panel-title" style="font-family: 'Germania One', cursive;"><img src="assets/empty-hourglass.png" style="height: 25px;"></img> Idle Controls</h3>
-												</div>
-												<div class="col-xs-9 text-right">
-													Current Run: <span id="days">0</span> days, <span id="hours">0</span> hours, <span id="minutes">0</span> minutes, <span id="seconds">0</span> seconds
-												</div>
-											</div>
-										</div>
-										<div id="collapseTimeControls" class="panel-collapse collapse in">
-											<div class="panel-body">
-												<div class="row">
-													<div class="col-xs-2">
-														Time speed: x<span id="speed">1</span>
-													</div>
-													<div class="col-xs-7">
-														<div class="row">
-															<div class="col-xs-12">
-																<span id="idleSwitch"></span>
-																<button class="btn btn-primary" onClick="system.gameSpeed(1000)">x1</button>
-																<span id="speed2"></span>
-																<span id="speed5"></span>
-																<span id="speed10"></span>
-															</div>
-														</div>
-													</div>
-													<div class="col-xs-3">
-														<a class="btn btn-primary btn-block" role="button" data-toggle="collapse" href="#idleOptions" aria-expanded="false" aria-controls="collapseExample">Options</a>
-													</div>
-												</div>
-											</div>
-											<div class="collapse" id="idleOptions">
-												<div class="row" style="margin-left:0px; margin-bottom:10px;">
-													<div class="col-xs-3">
-														Auto-Rest at HP%:
-													</div>
-													<div class="col-xs-8">
-														<input type="text" id="idleRest" name="idleRest" style="width: 100%;">
-													</div>
-												</div>
-												<div class="row" style="margin-left:0px; margin-bottom:10px;">
-													<div class="col-xs-3">
-														Auto-Rest at MP%:
-													</div>
-													<div class="col-xs-8">
-														<input type="text" id="idleMpRest" name="idleMpRest" style="width: 100%;">
-													</div>
-												</div>
-
-												<div class="row" style="margin-left:0px; margin-bottom:10px; margin-right:0px;">
-													<div class="col-xs-12">
-														<div class="list-group" style="margin-bottom:5px;">
-															<span id="toggleable">
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-6">
-									<div class="row">
-										<div class="col-xs-12">
-											<div class="panel panel-default">
-												<div class="panel-heading" data-toggle="collapse" data-target="#collapseSpellbook">
-													<div class="row">
-														<div class="col-xs-5">
-															<h3 class="panel-title" style="font-family: 'Germania One', cursive;"><img src="assets/book-cover.png" style="height: 25px;"></img> Spellbook</h3>
-														</div>
-														<div class="col-xs-7 text-right">
-															Arcania: <span id="arcania">0</span>
-														</div>
-													</div>
-												</div>
-												<div id="collapseSpellbook" class="panel-collapse collapse in">
-													<div class="panel-body">
-														<div class="row">
-															<div class="col-xs-12">
-																<ul class="nav nav-pills" role="tablist">
-																	<li role="presentation" class="active">
-																		<a href="#all" aria-controls="healing" role="tab" data-toggle="tab">All</a>
-																	</li>
-																	<li role="presentation">
-																		<a href="#healing" aria-controls="healing" role="tab" data-toggle="tab">Healing</a>
-																	</li>
-																	<li role="presentation">
-																		<a href="#damage" aria-controls="damage" role="tab" data-toggle="tab">Damage</a>
-																	</li>
-																	<li role="presentation">
-																		<a href="#debuff" aria-controls="debuff" role="tab" data-toggle="tab">Debuff</a>
-																	</li>
-																	<li role="presentation">
-																		<a href="#utility" aria-controls="utility" role="tab" data-toggle="tab">Utility</a>
-																	</li>
-																</ul>
-															</div>
-														</div>
-														<div class="row" style="height: 10px;"></div>
-														<div class="row">
-															<div class="col-xs-12">
-																<div class="tab-content">
-																	<div role="tabpanel" class="tab-pane active" id="all">
-																		<span id="spellbook"></span>
-																	</div>
-																	<div role="tabpanel" class="tab-pane" id="healing">
-																		<span id="spellbook0"></span>
-																	</div>
-																	<div role="tabpanel" class="tab-pane" id="damage">
-																		<span id="spellbook1"></span>
-																	</div>
-																	<div role="tabpanel" class="tab-pane" id="debuff">
-																		<span id="spellbook2"></span>
-																	</div>
-																	<div role="tabpanel" class="tab-pane" id="utility">
-																		<span id="spellbook3"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="row">
-										<div class="col-xs-12">
-											<div class="panel panel-default">
-												<div class="panel-heading" data-toggle="collapse" data-target="#collapseBuffs">
-													<h3 class="panel-title text-danger" style="font-family: 'Germania One', cursive;">
-														<img src="assets/biceps.png" style="height: 25px;"></img> Spell Effects
-													</h3>
-												</div>
-												<div id="collapseBuffs" class="panel-collapse collapse in">
-													<div class="panel-body">
-														<div class="row">
-															<div class="col-xs-12">
-																<ul class="list-group">
-																	<span id="temporary">
-																	</span>
-																</ul>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div role="tabpanel" class="tab-pane" id="inventoryTab">
-					<div class="row" style="height: 10px;"></div>
-					<div class="row">
-						<div class="col-xs-6">
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="panel panel-default">
-										<div class="panel-heading" data-toggle="collapse" data-target="#collapseShop">
-											<div class="row">
-												<div class="col-xs-6">
-													<h3 class="panel-title" style="font-family: 'Germania One', cursive;">
-														<img src="assets/swap-bag.png" style="height: 25px;"></img> The Shop
-													</h3>
-												</div>
-												<div class="col-xs-6 text-right">
-													Gold: <span id="gold">0</span>
-												</div>
-											</div>
-										</div>
-										<div id="collapseShop" class="panel-collapse collapse in">
-											<div class="panel-body">
-												<div class="row">
-													<div class="col-xs-12">
-														A weird stall is placed at the floor entrance. The shopkeeper seems bored, but rejoices upon noticing you and says: "Welcome, welcome to my humble shop! May I interest you in some keys or experience crystals? Or are you here to sell?"
-													</div>
-												</div>
-												<div class="row" style="height: 10px;"></div>
-												<div class="row">
-													<div class="col-xs-6">
-														<button class="btn btn-block btn-primary" onClick="inventory.buyKey()">Buy a Chest Key! (Price: <span id="keyprice">0</span>)</button>
-													</div>
-													<div class="col-xs-6">
-														<span id="sellbutton">
-															<button class="btn btn-block btn-success" onClick="inventory.updateInventory(true)">Enter Sell Mode</button>
-														</span>
-													</div>
-												</div>
-												<div class="row" style="height: 10px;"></div>
-												<div class="row">
-													<div class="col-xs-12">
-														Experience Crystals (Price: <span id="crystalprice">0</span>):
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-xs-12">
-														<button class="btn btn-primary" onClick="inventory.buyCrystal('Strength')">Strength</button>
-														<button class="btn btn-primary" onClick="inventory.buyCrystal('Dexterity')">Dexterity</button>
-														<button class="btn btn-primary" onClick="inventory.buyCrystal('Constitution')">Constitution</button>
-														<button class="btn btn-primary" onClick="inventory.buyCrystal('Speed')">Speed</button>
-														<button class="btn btn-primary" onClick="inventory.buyCrystal('Magic')">Magic</button>
-														<button class="btn btn-danger" data-toggle="tooltip" title="Small tip: A random crystal costs only half the price!" onClick="inventory.buyCrystal('')">Random</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-3">
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="panel panel-default">
-										<div class="panel-heading" data-toggle="collapse" data-target="#collapseInventory">
-											<div class="row">
-												<div class="col-xs-6">
-													<h3 class="panel-title" style="font-family: 'Germania One', cursive;">
-														<img src="assets/knapsack.png" style="height: 25px;"></img> Inventory
-													</h3>
-												</div>
-												<div class="col-xs-6 text-right">
-													Keys: <span id="keys">0</span>
-												</div>
-											</div>
-										</div>
-										<div id="collapseInventory" class="panel-collapse collapse in">
-											<div class="panel-body">
-												<div class="row">
-													<div class="col-xs-12">
-														<button class="btn btn-block btn-success" onClick="inventory.useAllCrystals()">Use All Crystals</button>
-													</div>
-												</div>
-												<div class="row" style="height:10px;"></div>
-												<div class="row">
-													<div class="col-xs-12">
-														<ul class="list-group" style="margin-bottom: 0px;">
-															<span id="inventory"></span>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-3">
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="panel panel-default">
-										<div class="panel-heading" data-toggle="collapse" data-target="#collapseEquipment">
-											<div class="row">
-												<div class="col-xs-12">
-													<h3 class="panel-title" style="font-family: 'Germania One', cursive;">
-														<img src="assets/battle-gear.png" style="height: 25px;"></img> Equipment
-													</h3>
-												</div>
-											</div>
-										</div>
-										<div id="collapseEquipment" class="panel-collapse collapse in">
-											<div class="panel-body">
-												<div class="row">
-													<div class="col-xs-12">
-														<ul class="list-group" style="margin-bottom: 0px;">
-															<span id="equipment"></span>
-														</ul>
-													</div>
 												</div>
 											</div>
 										</div>
@@ -607,10 +306,10 @@
 										<div class="panel-heading" data-toggle="collapse" data-target="#collapseUpgrades">
 											<div class="row">
 												<div class="col-xs-5">
-													<h3 class="panel-title" style="font-family: 'Germania One', cursive;"><img src="assets/plain-arrow.png" style="height: 25px;"></img> Upgrades</h3>
+													<h3 class="panel-title" style="font-family: 'Germania One', cursive;"><img src="assets/plain-arrow.png" style="height: 25px;"></img> 升级</h3>
 												</div>
 												<div class="col-xs-7 text-right">
-													Excelia: <span id="excelia">0</span>
+													技能点: <span id="skillpoint">0</span>
 												</div>
 											</div>
 										</div>
@@ -634,7 +333,7 @@
 										<div class="panel-heading" data-toggle="collapse" data-target="#collapseUpgrades">
 											<div class="row">
 												<div class="col-xs-12">
-													<h3 class="panel-title" style="font-family: 'Germania One', cursive;"><img src="assets/plain-arrow.png" style="height: 25px;"></img> Upgrade Effects:</h3>
+													<h3 class="panel-title" style="font-family: 'Germania One', cursive;"><img src="assets/plain-arrow.png" style="height: 25px;"></img> 升级效果</h3>
 												</div>
 											</div>
 										</div>
@@ -664,7 +363,29 @@
 								<div class="panel-heading" data-toggle="collapse" data-target="#collapseChangelog">
 									<h3 class="panel-title" style="font-family: 'Germania One', cursive;">
 										<a style="cursor:pointer;" class="accordion-toggle">
-											<img src="assets/hazard-sign.png" style="height: 25px;"></img> Latest Changes
+											<img src="assets/hazard-sign.png" style="height: 25px;"></img> Announcement
+										</a>
+									</h3>
+								</div>
+								<div id="collapseAnnouncement" class="panel-collapse collapse in">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-xs-12">
+												<div id="Announcement"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="panel panel-default">
+								<div class="panel-heading" data-toggle="collapse" data-target="#collapseChangelog">
+									<h3 class="panel-title" style="font-family: 'Germania One', cursive;">
+										<a style="cursor:pointer;" class="accordion-toggle">
+											<img src="assets/hazard-sign.png" style="height: 25px;"></img> Changes
 										</a>
 									</h3>
 								</div>
@@ -688,7 +409,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" data-toggle="collapse" data-target="#collapseDataTab">
                                     <h3 class="panel-title" style="font-family: 'Germania One', cursive;">
-                                        Game Data
+                                        游戏数据
                                     </h3>
                                 </div>
                                 <div id="collapseDataTab" class="panel-collapse collapse in">
@@ -696,15 +417,15 @@
 
                                         <div class="row">
                                             <div class="col-xs-4 text-center">
-                                                <button class="btn btn-primary btn-block" onClick="system.exportGame()">Export</button>
+                                                <button class="btn btn-primary btn-block" onClick="system.exportGame()">导出</button>
                                             </div>
 
                                             <div class="col-xs-4 text-center">
-                                                <button class="btn btn-success btn-block" onClick="system.importGame()">Import</button>
+                                                <button class="btn btn-success btn-block" onClick="system.importGame()">导入</button>
                                             </div>
 
                                             <div class="col-xs-4 text-center">
-                                                <button class="btn btn-danger btn-block" onClick="system.hardReset()">Wipe data</button>
+                                                <button class="btn btn-danger btn-block" onClick="system.hardReset()">重置</button>
                                             </div>
 
                                             <hr>
@@ -712,7 +433,7 @@
 
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <p class="text-center text-muted small">Click export to dump your data into the textbox below. Paste in exported data and click Import to load your saved data.</p>
+                                                <p class="text-center text-muted small">导出游戏数据</p>
                                                 <textarea rows="10" class="form-control" id="dataContainer"></textarea>
                                             </div>
                                         </div>
@@ -726,7 +447,7 @@
 			<div class="row">
 				<hr>
 				<div class="col-xs-12 text-center">
-					ICrawler was made by the <a href="https://github.com/iCrawlerRPG">ICrawlerRPG Team</a> Icons are from their respective creators at <a href="http://game-icons.net/">Game-icons.net</a>.
+					TowerClimber was made by the <a href="https://github.com/lwyj123">lwyj123</a> Icons are from their respective creators at <a href="http://game-icons.net/">Game-icons.net</a>.
 				</div>
 			</div>
 		</div>

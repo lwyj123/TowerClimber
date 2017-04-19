@@ -278,7 +278,7 @@ var Spells = function() {
 	};
 
 	var updateSpellHtml = function(spell, hasBought) {
-		document.getElementById("arcania").innerHTML = Math.round(100*arcania)/100;
+		document.getElementById("magicash").innerHTML = Math.round(100*arcania)/100;
 		if (!hasBought) {
 			document.getElementById(spell.id + "arcaniacost").innerHTML = spell.arcaniaCost;
 			document.getElementById(spell.id + "arcaniacostall").innerHTML = spell.arcaniaCost;

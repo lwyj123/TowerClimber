@@ -2,72 +2,31 @@ var Monsters = function() {
     var inBossBattle = false;
     var monsterList = [
         //First Tier
-        {name:"Rat", killed:0},
-        {name:"Bat", killed:0},
-        {name:"Slime", killed:0},
-        {name:"Kobold", killed:0},
-        {name:"Wolf", killed:0},
-        {name:"Lizard", killed:0},
-        {name:"Goblin", killed:0},
-        {name:"Bandit", killed:0},
-        {name:"Spider", killed:0},
-        {name:"Eagle", killed:0},
+        {name:"老鼠", killed:0},
+        {name:"蝙蝠", killed:0},
 
         //Second Tier
-        {name:"Bear", killed:0},
-        {name:"Snake", killed:0},
-        {name:"Troll", killed:0},
-        {name:"Kobold Warrior", killed:0},
-        {name:"Giant Wolf", killed:0},
-        {name:"Ghoul", killed:0},
-        {name:"Alligator", killed:0},
-        {name:"Giant Lizard", killed:0},
-        {name:"Giant Rat", killed: 0},
-        {name:"Orc Child", killed:0},
-
+        {name:"狗熊", killed:0},
+        {name:"稻草人", killed:0},
         //Third Tier
-        {name: "Stone Golem", killed: 0},
-        {name: "Lesser Elemental", killed: 0},
-        {name: "Kobold Chieftain", killed: 0},
-        {name: "Weakened Minotaur", killed: 0},
-        {name: "Troll Warrior", killed: 0},
-        {name: "Wisp", killed: 0},
-        {name: "Dragon Hatchling", killed: 0},
-        {name: "Goblin Shaman", killed: 0},
-        {name: "Giant Snake", killed: 0},
-        {name: "Mummy", killed: 0},
+        {name: "宝箱怪", killed: 0},
+        {name: "狼人", killed: 0},
 
         //Fourth Tier
-        {name: "Elemental", killed: 0},
-        {name: "Lesser Imp", killed: 0},
-        {name: "Lizardman", killed: 0},
-        {name: "Orc", killed: 0},
-        {name: "Troll Chieftain", killed: 0},
-        {name: "Cyclops", killed: 0},
-        {name: "Young Vampire", killed: 0},
-        {name: "Harpy", killed: 0},
-        {name: "Empowered Wisp", killed: 0},
-        {name: "Ancient Mummy", killed: 0},
+        {name: "石头人", killed: 0},
+        {name: "鳄鱼", killed: 0},
 
         //Fifth Tier
-        {name: "Imp", killed: 0},
-        {name: "Orc Soldier", killed: 0},
-        {name: "Young Minotaur", killed: 0},
-        {name: "Floating Eye", killed: 0},
-        {name: "Banshee", killed: 0},
-        {name: "Young Dragon", killed: 0},
-        {name: "Cyclops Warrior", killed: 0},
-        {name: "Lizardman Archer", killed: 0},
-        {name: "Living Armor", killed: 0},
-        {name: "Frenzied Goblin", killed: 0}
+        {name: "剑姬", killed: 0},
+        {name: "剑客", killed: 0},
     ];
 
     var bossList = [
-        {name: "The First Guardian, Alstroemeria", currentHealth: 91204, maximumHealth: 91204, strength: 151, dexterity: 151, constitution: 151, status: 0},
-        {name: "The Second Guardian, Bouvardia", currentHealth: 372100, maximumHealth: 372100, strength: 305, dexterity: 305, constitution: 305, status: 0},
-        {name: "The Third Guardian, Clarkia", currentHealth: 864900, maximumHealth: 864900, strength: 465, dexterity: 465, constitution: 465, status: 0},
-        {name: "The Fourth Guardian, Dianthus", currentHealth: 1638400, maximumHealth: 1638400, strength: 640, dexterity: 640, constitution: 640, status: 0},
-        {name: "The Fifth Guardian, Erigeron", currentHealth: 2930944, maximumHealth: 2930944, strength: 856, dexterity: 856, constitution: 856, status: 0}
+        {name: "红熊王", currentHealth: 91204, maximumHealth: 91204, strength: 151, dexterity: 151, constitution: 151, status: 0},
+        {name: "骷髅领主", currentHealth: 372100, maximumHealth: 372100, strength: 305, dexterity: 305, constitution: 305, status: 0},
+        {name: "亡灵骑士", currentHealth: 864900, maximumHealth: 864900, strength: 465, dexterity: 465, constitution: 465, status: 0},
+        {name: "大帝 昂布呐斯", currentHealth: 1638400, maximumHealth: 1638400, strength: 640, dexterity: 640, constitution: 640, status: 0},
+        {name: "斯基劳爵士", currentHealth: 2930944, maximumHealth: 2930944, strength: 856, dexterity: 856, constitution: 856, status: 0}
     ];
 
     var instancedMonster = {
@@ -201,6 +160,12 @@ var Monsters = function() {
         }
     };
 
+    /**
+     * 攻击怪物
+     * @param  {[type]} monster   [description]
+     * @param  {[type]} spellCast [description]
+     * @return {[type]}           [description]
+     */
     self.battle = function(monster, spellCast) {
         if(!player.getInBattle()) {
             player.setInBattle(true);
@@ -225,10 +190,12 @@ var Monsters = function() {
                     }
                 }
                 else {
+                    //玩家攻击
                     isDead = playerAttacks(monster);
                 }
             }
             if (!isDead) {
+                //怪物攻击
                 isDead = monsterAttacks(monster);
             }
         }
@@ -248,6 +215,12 @@ var Monsters = function() {
         return self.monsterTakeDamage(monster, damage);
     };
 
+    /**
+     * 怪物损血
+     * @param  {Object} monster 怪物实例
+     * @param  {Number} damage  受到伤害
+     * @return {Boolean}         是否死亡，true死亡
+     */
     self.monsterTakeDamage = function(monster, damage) {
         monster.currentHealth -= damage;
         document.getElementById("monsterhp").innerHTML = Math.floor(monster.currentHealth);
@@ -259,14 +232,14 @@ var Monsters = function() {
         return false;
     };
 
+    /**
+     * 怪物死亡，通知日志以及探索button解锁
+     * @param  {[type]} monster 怪物实例
+     */
     var monsterDeath = function(monster) {
         player.setInBattle(false);
         if (!inBossBattle) {
             document.getElementById("combatlog").innerHTML += "You have defeated the " + monster.name + "!<br>";
-            if (Math.floor(Math.random()*100) < 10) {
-                monsterCrystalDrop(monster);
-                inventory.updateInventory();
-            }
             updateMonsterKilled(monster.name);
         }
         else {
@@ -276,32 +249,11 @@ var Monsters = function() {
             tower.bossDefeated();
             inBossBattle = false;
         }
-        upgrades.gainExcelia(monster);
+        //upgrades.gainExcelia(monster);
         player.loadRestButton();
         player.loadExploreButton();
         self.loadMonsterInfo();
     };
-
-    var monsterCrystalDrop = function(monster) {
-        var type = Math.floor(Math.random()*5);
-        var experience = monster.strength + monster.dexterity + monster.constitution;
-        if (type === 0) {
-            inventory.createCrystal("Strength", experience);
-        }
-        else if (type == 1) {
-            inventory.createCrystal("Dexterity", experience);
-        }
-        else if (type == 2) {
-            inventory.createCrystal("Constitution", experience);
-        }
-        else if (type == 3) {
-            inventory.createCrystal("Speed", experience);
-        }
-        else if (type == 4) {
-            inventory.createCrystal("Magic", experience);
-        }
-        document.getElementById("combatlog").innerHTML += "The " + monster.name + " has left an experience crystal behind!<br>";
-    }
 
     var updateMonsterKilled = function(name) {
         for (var i = 0; i < monsterList.length; i++) {
@@ -311,6 +263,14 @@ var Monsters = function() {
         }
     };
 
+    /**
+     * 伤害计算
+     * @param  {Number} attackerStrength     攻击者力量
+     * @param  {Number} attackerDexterity    攻击者敏捷
+     * @param  {Number} defenderConstitution 防御者体格
+     * @param  {Number} defenderHealth       防御者生命
+     * @return {Number}                      伤害值
+     */
     var damageFormula = function(attackerStrength, attackerDexterity, defenderConstitution, defenderHealth) {
         var strengthWeigth = 2;
         var dexterityWeigth = 0.1;
@@ -362,6 +322,11 @@ var Monsters = function() {
         return false;
     };
 
+    /**
+     * 
+     * @param  {[type]} boolean [description]
+     * @return {[type]}         [description]
+     */
     self.battleChance = function(boolean) {
         if (boolean) {
             rollMonster();
@@ -377,6 +342,10 @@ var Monsters = function() {
         }
     };
 
+    /**
+     * 随机怪物，进入战斗
+     * 由于默认一层10个，后面需要修改
+     */
     var rollMonster = function() {
         var tier = Math.floor((player.getCurrentFloor()-1)/10);
         var monster = Math.floor(Math.random()*10);
@@ -387,6 +356,11 @@ var Monsters = function() {
         self.battle(instancedMonster, false);
     };
 
+    /**
+     * 创建怪物
+     * @param  {Number} number 创建代码
+     * @return {Object}        怪物实例
+     */
     var createMonster = function(number) {
         var tempMonster = {name: "", currentHealth: 0, maximumHealth:0 , strength: 0, dexterity: 0, constitution: 0, status: 0};
         var statPool = Math.round((player.getCurrentFloor() * 15) + Math.pow(1.1, player.getCurrentFloor() - 1) - 1);
@@ -401,6 +375,14 @@ var Monsters = function() {
         return tempMonster;
     };
 
+
+    /**
+     * TODO: 解析
+     * 加强怪物？？？
+     * @param  {[type]} monster  [description]
+     * @param  {[type]} statPool [description]
+     * @return {[type]}          [description]
+     */
     var distributeStats = function(monster, statPool) {
         var choice;
         while (statPool !== 0) {
@@ -421,10 +403,18 @@ var Monsters = function() {
         }
     };
 
+    /**
+     * 根据体格计算血量
+     * @param  {Number} constitution 体格值
+     * @return {Number}              HP值
+     */
     var calculateHealth = function(constitution) {
         return (Math.pow(constitution, 2) * 4);
     };
 
+    /**
+     * 逃跑
+     */
     self.runAway = function() {
         if (player.getInBattle()) {
             document.getElementById("combatlog").innerHTML = "";
@@ -438,6 +428,7 @@ var Monsters = function() {
                 player.loadRestButton();
             }
             else {
+                //逃跑失败
                 document.getElementById("combatlog").innerHTML += "You failed to run away.<br>";
                 self.battle(instancedMonster, true);
             }

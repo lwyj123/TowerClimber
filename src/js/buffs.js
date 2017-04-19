@@ -236,6 +236,7 @@ var Buffs = function() {
 
 	//Other Methods
 	self.updateTemporaryBuffs = function(decrease) {
+		/*
 		document.getElementById("temporary").innerHTML = '';
 
 		if (aegisTimeLeft !== 0) {
@@ -255,6 +256,7 @@ var Buffs = function() {
 			}
 			document.getElementById("temporary").innerHTML += '<li class="list-group-item list-group-item-info"><span class="badge">' + Math.round(rageTimeLeft) + '</span>Rage</li>';
 		}
+		*/
 	};
 
 	self.updateToggleableBuffs = function() {
@@ -320,6 +322,7 @@ var Buffs = function() {
 		}
 	};
 
+	/*
 	self.toggleBuff = function(buffId) {
 		if (buffId == "castCureInBattle") {
 			castCureInBattle = !castCureInBattle;
@@ -332,6 +335,7 @@ var Buffs = function() {
 		}
 		self.updateToggleableBuffs();
 	};
+	*/
 };
 
 var buffs = new Buffs();
