@@ -140,6 +140,10 @@ var Tower = function() {
 		self.loadTowerScreen();
 	};
 
+	/**
+	 * 变换楼层
+	 * @param  {Number} floorsChanged 楼层变换数
+	 */
 	self.changeFloor = function(floorsChanged) {
 		if (!player.getInBattle()) {
 			player.setCurrentFloor(player.getCurrentFloor() + floorsChanged);
@@ -149,6 +153,11 @@ var Tower = function() {
 		}
 	};
 
+	/**
+	 * 判断是否找到下一层的楼梯
+	 * @param  {Number}  currentFloor 当前层数
+	 * @return {Boolean}              是否已找到
+	 */
 	var hasFoundStairs = function(currentFloor) {
 		if (floors[currentFloor].explored > floors[currentFloor].stairsPosition) {
 			return true;
@@ -156,6 +165,9 @@ var Tower = function() {
 		return false;
 	};
 
+	/**
+	 * 探索当前层
+	 */
 	self.exploreFloor = function() {
 		var currentFloor = player.getCurrentFloor();
 		player.setManaCurrentValue(player.getManaCurrentValue() + buffs.getManaPerSecond());
@@ -185,6 +197,10 @@ var Tower = function() {
 		}
 	};
 
+	/**
+	 * 探索的随机事件
+	 * @return {Boolean} 是否触发了事件
+	 */
 	var checkFloorEvent = function() {
 		var eventChance = 10;
 		var eventRoll = Math.floor(Math.random()*100);

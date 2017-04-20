@@ -80,8 +80,8 @@ var Inventory = function() {
 
     //Other Methods
     self.updateInventoryHTML = function() {
-        document.getElementById("gold").innerHTML = gold;
-        document.getElementById("keys").innerHTML = keys;
+        //document.getElementById("gold").innerHTML = gold;
+        //document.getElementById("keys").innerHTML = keys;
     };
 
     self.updateInventory = function(boolean) {

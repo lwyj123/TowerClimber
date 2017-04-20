@@ -67,6 +67,7 @@ var System = function() {
     };
 
     self.gameSpeed = function(number) {
+        eventEmitter.emit("gameSpeedChange");
         if (idleMode) {
             refreshSpeed = number;
             theGame = window.clearInterval(theGame);
@@ -205,5 +206,6 @@ $.get( "https://raw.githubusercontent.com/lwyj123/TowerClimber/master/CHANGELOG.
 
 });
 
+var eventEmitter = new HJevent();
 var system = new System();
 system.runGame();

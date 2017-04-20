@@ -358,6 +358,7 @@ var Monsters = function() {
 
     /**
      * 创建怪物
+     * TODO: 更加优雅的怪物对象代码
      * @param  {Number} number 创建代码
      * @return {Object}        怪物实例
      */
@@ -368,11 +369,42 @@ var Monsters = function() {
         tempMonster.strength++;
         tempMonster.dexterity++;
         tempMonster.constitution++;
+        //中间件方式实现装饰者
+
+        tempMonster.addDecorators = function(decorators) {
+            var self = this;
+            //TODO: 实现多称号而不是单一称号
+            decorators(self);
+        };
         statPool -= 3;
+        randomMonsterTitle(tempMonster);
         distributeStats(tempMonster, statPool);
         tempMonster.maximumHealth = calculateHealth(tempMonster.constitution);
         tempMonster.currentHealth = tempMonster.maximumHealth;
         return tempMonster;
+    };
+
+    /**
+     * 为怪物添加随机称号
+     * @param  {Object} monster 怪物实例
+     */
+    var randomMonsterTitle = function(monster) {
+        //TODO: 更加优雅的代码
+        //TODO: 实现无称号
+        var decorators = [
+            function(monster) {
+                monster.name = "懦弱的 " + monster.name;
+                monster.strength -= 2;
+                monster.constitution -= 2;
+            },
+            function(monster) {
+                monster.name = "强壮的 " + monster.name;
+                monster.strength += 2;
+                monster.constitution += 2;
+            },            
+        ];
+        let index = Math.floor((Math.random()*decorators.length)); 
+        monster.addDecorators(decorators[index]);
     };
 
 
