@@ -15,6 +15,13 @@ var Player = function() {
 	var resting = false;
 
 	var self = this;
+
+	//重置
+	eventEmitter.on('gameReset', function playerReset() {
+		localStorage.removeItem('playerSave');
+		self.load;
+	});
+
 	//Save Method
 	self.save = function() {
 		var playerSave = {
@@ -40,7 +47,7 @@ var Player = function() {
 				name = playerSave.savedName;
 			}
 			else {
-				name = prompt("Please, enter your name:", "Crawler");
+				name = prompt("Please, enter your name:", "Climber");
 			}
 			if (playerSave.savedHealth !== undefined) {
 				loadHealth(playerSave.savedHealth);

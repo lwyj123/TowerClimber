@@ -5,6 +5,9 @@
 *怪物系统更新*
 - 加入称号系统
 
+*bug发现*
+- 重置无效，中断开发转入扩展HJtimeout替换原生interval
+
 **Changes in  v0.0.1(2017-04-19):**
 
 *Initial*

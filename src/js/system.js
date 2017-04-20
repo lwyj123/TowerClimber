@@ -23,7 +23,6 @@ var System = function() {
     var saveAll = function() {
         save();
         player.save();
-        //upgrades.save();
         buffs.save();
         monsters.save();
         tower.save();
@@ -123,17 +122,18 @@ var System = function() {
 
     self.hardReset = function() {
         theGame = window.clearInterval(theGame);
+        eventEmitter.emit('gameReset');
         if (confirm("Are you sure you want to wipe all your progress?")) {
             // localStorage.clear();
-                localStorage.removeItem('systemSave');
-                localStorage.removeItem('playerSave');
-                localStorage.removeItem('upgradesSave');
-                localStorage.removeItem('buffsSave');
-                localStorage.removeItem('monstersSave');
-                localStorage.removeItem('towerSave');
-                localStorage.removeItem('inventorySave');
+            localStorage.removeItem('systemSave');
+            localStorage.removeItem('playerSave');
+            localStorage.removeItem('upgradesSave');
+            localStorage.removeItem('buffsSave');
+            localStorage.removeItem('monstersSave');
+            localStorage.removeItem('towerSave');
+            localStorage.removeItem('inventorySave');
 
-            location.reload();
+            
         }
         else {
             this.runGame();
@@ -163,6 +163,7 @@ var System = function() {
 
 
         updateTime(ticks);
+        eventEmitter.emit("TimeChange");
         saveAll();
     };
 
