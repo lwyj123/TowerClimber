@@ -210,8 +210,7 @@ var Monsters = function() {
         if (damage >= monster.currentHealth) {
             damage = monster.currentHealth;
         }
-        document.getElementById("combatlog").innerHTML += "You dealt " + Math.round(damage) + " damage to the " + monster.name + ".<br>";
-        eventEmitter.emit('playerAttack', monster);
+        eventEmitter.emit('playerAttack', monster, Math.round(damage));
         return self.monsterTakeDamage(monster, damage);
     };
 
@@ -239,11 +238,12 @@ var Monsters = function() {
     var monsterDeath = function(monster) {
         player.setInBattle(false);
         if (!inBossBattle) {
-            document.getElementById("combatlog").innerHTML += "You have defeated the " + monster.name + "!<br>";
+            eventEmitter.emit('monsterDead', 'attack', monster, player);
             updateMonsterKilled(monster.name);
         }
         else {
-            document.getElementById("combatlog").innerHTML += "You have defeated a floor boss! " + monster.name + " recognizes your strength and allows you to advance.";
+            eventEmitter.emit('monsterDead', 'attack', monster, player);
+            eventEmitter.emit('floorbossDead', monster);
             tower.setBossFound(false);
             tower.setLastBossDefeated(player.getCurrentFloor());
             tower.bossDefeated();
@@ -292,26 +292,11 @@ var Monsters = function() {
             damage = damage*2;
         }
         if (buffs.getAegisTimeLeft() === 0) {
-            var barrier = buffs.getBarrierLeft();
-            if (barrier > 0) {
-                if (barrier >= damage) {
-                    buffs.setBarrierLeft(barrier - damage);
-                    document.getElementById("combatlog").innerHTML += "Your barrier absorbed " + Math.round(damage) + " damage from " + monster.name + "'s attack.<br>";
-                    buffs.updateTemporaryBuffs(false);
-                    return false;
-                }
-                else {
-                    document.getElementById("combatlog").innerHTML += "Your barrier absorbed " + Math.round(barrier) + " damage from " + monster.name + "'s attack.<br>";
-                    document.getElementById("combatlog").innerHTML += "Your barrier has shattered.<br>";
-                    damage -= barrier;
-                    buffs.setBarrierLeft(0);
-                    buffs.updateTemporaryBuffs(false);
-                }
-            }
+            //考虑屏障系统
             player.setHealthCurrentValue(player.getHealthCurrentValue() - damage);
-            document.getElementById("combatlog").innerHTML += "You took " + Math.round(damage) + " damage from the " + monster.name + "'s attack.<br>";
+            eventEmitter.emit("playerHurted", "attack", monster, Math.round(damage))
             if (player.getHealthCurrentValue() === 0) {
-                player.death(monster);
+                eventEmitter.emit("playerDead", monster);
                 return true;
             }
         }

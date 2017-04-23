@@ -469,7 +469,7 @@ var Player = function() {
 					document.getElementById("exploreButton").innerHTML = '<button class="btn btn-danger btn-block" disabled="disabled">Find Monster</button>';
 				}
 				else {
-					document.getElementById("exploreButton").innerHTML = '<button class="btn btn-danger btn-block" disabled="disabled">Explore</button>';
+					document.getElementById("exploreButton").innerHTML = '<button class="btn btn-danger btn-block" disabled="disabled">探索</button>';
 				}
 			}
 			else {
@@ -477,7 +477,7 @@ var Player = function() {
 					document.getElementById("exploreButton").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.exploreFloor()">Find Monster</button>';
 				}
 				else {
-					document.getElementById("exploreButton").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.exploreFloor()">Explore</button>';
+					document.getElementById("exploreButton").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.exploreFloor()">探索</button>';
 				}
 			}
 		}
@@ -489,13 +489,13 @@ var Player = function() {
 	self.loadRestButton = function() {
 		if (currentFloor !== 0) {
 			if (inBattle) {
-				document.getElementById("restButton").innerHTML = '<button class="btn btn-danger btn-block" disabled="disabled">Rest</button>';
+				document.getElementById("restButton").innerHTML = '<button class="btn btn-danger btn-block" disabled="disabled">休息一下</button>';
 			}
 			else if (resting) {
-				document.getElementById("restButton").innerHTML = '<button class="btn btn-success btn-block" onClick="player.toggleRest()">Stop Resting</button>';
+				document.getElementById("restButton").innerHTML = '<button class="btn btn-success btn-block" onClick="player.toggleRest()">停止休息</button>';
 			}
 			else {
-				document.getElementById("restButton").innerHTML = '<button class="btn btn-default btn-block" onClick="player.toggleRest()">Rest</button>';
+				document.getElementById("restButton").innerHTML = '<button class="btn btn-default btn-block" onClick="player.toggleRest()">休息一下</button>';
 			}
 		}
 		else {
@@ -511,7 +511,6 @@ var Player = function() {
 			monsters.setInBossBattle(false);
 		}
 
-		eventEmitter.emit('playerDeath', monster);
 		tower.changeFloor(-currentFloor);
 		
 		loseStats(10 - buffs.getDeathPenaltyReduction());
@@ -545,3 +544,4 @@ var Player = function() {
 };
 
 var player = new Player();
+eventEmitter.on('playerDead', player.death);

@@ -101,15 +101,15 @@ var Tower = function() {
 		document.getElementById("explperc").innerHTML = Math.round(100*(floors[currentFloor].explored/floors[currentFloor].size)*100)/100 + "%";
 		document.getElementById("floorbar").style.width = 100*(floors[currentFloor].explored/floors[currentFloor].size) + "%";
 		if (floors[currentFloor].canAdvance && currentFloor < monsters.getMonsterList().length) {
-			document.getElementById("advbut").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.changeFloor(1)">Next Floor</button>';
+			document.getElementById("advbut").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.changeFloor(1)">去下一层</button>';
 		}
 		else if (bossFound) {
 			if (currentFloor % 10 !== 0) {
-				document.getElementById("advbut").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.changeFloor(1)">Next Floor</button>';
+				document.getElementById("advbut").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.changeFloor(1)">去下一层</button>';
 			}
 			else {
 				if (currentFloor <= lastBossDefeated) {
-					document.getElementById("advbut").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.changeFloor(1)">Next Floor</button>';
+					document.getElementById("advbut").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.changeFloor(1)">去下一层</button>';
 				}
 				else {
 					document.getElementById("advbut").innerHTML = '<button class="btn btn-danger btn-block" onClick="tower.startBossBattle()">Fight Floor Boss</button>';
@@ -120,7 +120,7 @@ var Tower = function() {
 			document.getElementById("advbut").innerHTML = '';
 		}
 		if (currentFloor !== 0) {
-			document.getElementById("retbut").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.changeFloor(-1)">Previous Floor</button>';
+			document.getElementById("retbut").innerHTML = '<button class="btn btn-default btn-block" onClick="tower.changeFloor(-1)">去上一层</button>';
 		}
 		else {
 			document.getElementById("retbut").innerHTML = '';
