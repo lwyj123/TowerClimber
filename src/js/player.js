@@ -21,6 +21,15 @@ var Player = function() {
 		localStorage.removeItem('playerSave');
 		self.load;
 	});
+  eventEmitter.on('playerAttack', function(monster) {
+  	var multiplier = buffs.getLevelingSpeedMultiplier();
+		self.setStrengthExperience(strength.experience + multiplier*(monster.strength/constitution.level));
+		self.setDexterityExperience(dexterity.experience + multiplier*(monster.dexterity/dexterity.level));  	
+  });
+  eventEmitter.on('monsterAttack', function(monster) {
+  	var multiplier = buffs.getLevelingSpeedMultiplier();
+		self.setConstitutionExperience(constitution.experience + multiplier*(monster.strength/constitution.level));
+  });
 
 	//Save Method
 	self.save = function() {
@@ -374,11 +383,11 @@ var Player = function() {
 	};
 
 	var setMagicLevel = function(newLevel) {
-		magic.level = newLevel;
+/*		magic.level = newLevel;
 		magic.nextLevel = neededExperience(magic.level + 1);
 		spells.updateSpellbook();
 		self.setManaMaximumValue(Math.pow(magic.level + magic.bonus,2) * 2);
-		loadStatScreen("mgc", magic);
+		loadStatScreen("mgc", magic);*/
 	};
 
 	self.setStrengthBonus = function(bonus) {
@@ -494,28 +503,17 @@ var Player = function() {
 		}
 	};
 
-	self.gainExperience = function(monster, attacking) {
-		var multiplier = buffs.getLevelingSpeedMultiplier();
-		if (attacking) {
-			self.setStrengthExperience(strength.experience + multiplier*(monster.strength/constitution.level));
-			self.setDexterityExperience(dexterity.experience + multiplier*(monster.dexterity/dexterity.level));
-		}
-		else {
-			self.setConstitutionExperience(constitution.experience + multiplier*(monster.strength/constitution.level));
-		}
-	};
+
 
 	self.death = function(monster) {
 		inBattle = false;
 		if (monsters.getInBossBattle()) {
 			monsters.setInBossBattle(false);
 		}
-		document.getElementById("combatlog").innerHTML += "You have been defeated by the " + monster.name + "!";
-		if (system.getIdleMode()) {
-			system.toggleIdle();
-		}
+
+		eventEmitter.emit('playerDeath', monster);
 		tower.changeFloor(-currentFloor);
-		upgrades.updateExcelia(-((100 - buffs.getExceliaSavedOnDeath()) * upgrades.getExcelia())/100);
+		
 		loseStats(10 - buffs.getDeathPenaltyReduction());
 		loseAllExperience();
 		monsters.loadMonsterInfo();

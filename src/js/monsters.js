@@ -211,7 +211,7 @@ var Monsters = function() {
             damage = monster.currentHealth;
         }
         document.getElementById("combatlog").innerHTML += "You dealt " + Math.round(damage) + " damage to the " + monster.name + ".<br>";
-        player.gainExperience(monster, true);
+        eventEmitter.emit('playerAttack', monster);
         return self.monsterTakeDamage(monster, damage);
     };
 
@@ -318,7 +318,7 @@ var Monsters = function() {
         else {
             document.getElementById("combatlog").innerHTML += "Aegis absorbed " + Math.round(damage) + " damage from " + monster.name + "'s attack.<br>";
         }
-        player.gainExperience(monster, false);
+        eventEmitter.emit('monsterAttack', monster);
         return false;
     };
 
@@ -449,10 +449,10 @@ var Monsters = function() {
      */
     self.runAway = function() {
         if (player.getInBattle()) {
-            document.getElementById("combatlog").innerHTML = "";
             var runRoll = Math.random() * (instancedMonster.strength + instancedMonster.dexterity + instancedMonster.constitution);
             if (runRoll < player.getSpeedLevel()) {
-                document.getElementById("combatlog").innerHTML += "You escaped from the battle against " + instancedMonster.name + ".";
+                eventEmitter.emit('playerRunaway-success', instancedMonster);
+                
                 self.loadMonsterInfo();
                 player.setSpeedExperience(player.getSpeedExperience() + runRoll);
                 player.setInBattle(false);
@@ -461,7 +461,7 @@ var Monsters = function() {
             }
             else {
                 //逃跑失败
-                document.getElementById("combatlog").innerHTML += "You failed to run away.<br>";
+                eventEmitter.emit('playerRunaway-fail');
                 self.battle(instancedMonster, true);
             }
         }
