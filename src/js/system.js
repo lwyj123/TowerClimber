@@ -67,12 +67,6 @@ var System = function() {
 
     self.gameSpeed = function(number) {
         eventEmitter.emit("gameSpeedChange");
-        if (idleMode) {
-            refreshSpeed = number;
-            theGame = window.clearInterval(theGame);
-            self.runGame();
-            document.getElementById("speed").innerHTML = 1000/number;
-        }
     };
 
     self.exportGame = function() {

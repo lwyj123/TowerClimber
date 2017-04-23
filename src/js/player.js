@@ -19,7 +19,7 @@ var Player = function() {
 	//重置
 	eventEmitter.on('gameReset', function playerReset() {
 		localStorage.removeItem('playerSave');
-		self.load;
+		self.load();
 	});
   eventEmitter.on('playerAttack', function(monster) {
   	var multiplier = buffs.getLevelingSpeedMultiplier();
