@@ -35,7 +35,7 @@ var Combatlog = function() {
           break;
       }
     });
-    eventEmitter.on("monsterDead", function(monster) {
+    eventEmitter.on("floorbossDead", function(monster) {
       self.log("本层boss被打败了，可以进入下一层了<br />");
     });
 

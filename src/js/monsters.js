@@ -294,7 +294,7 @@ var Monsters = function() {
         if (buffs.getAegisTimeLeft() === 0) {
             //考虑屏障系统
             player.setHealthCurrentValue(player.getHealthCurrentValue() - damage);
-            eventEmitter.emit("playerHurted", "attack", monster, Math.round(damage))
+            eventEmitter.emit("playerHurted", "attack", monster, Math.round(damage));
             if (player.getHealthCurrentValue() === 0) {
                 eventEmitter.emit("playerDead", monster);
                 return true;
